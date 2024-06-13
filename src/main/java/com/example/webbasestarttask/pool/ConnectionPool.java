@@ -100,9 +100,9 @@ public class ConnectionPool {
             Driver driver = drivers.nextElement();
             try {
                 DriverManager.deregisterDriver(driver);
-                logger.info(String.format("deregistering jdbc driver: %s", driver));
+                logger.info(String.format("unregistering jdbc driver: %s", driver));
             } catch (SQLException e) {
-                logger.error(String.format("Error deregistering driver %s", driver), e);
+                logger.error(String.format("Error unregistering driver %s", driver), e);
             }
         }
     }
