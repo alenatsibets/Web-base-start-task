@@ -36,7 +36,7 @@ public class ConnectionPool {
 
     private ConnectionPool() {
         Properties prop = getProperties();
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < CONNECTION_POOL_CAPACITY; i++) {
             Connection connection;
             try {
                 connection = DriverManager.getConnection(POSTGRES_CONNECTION, prop);
