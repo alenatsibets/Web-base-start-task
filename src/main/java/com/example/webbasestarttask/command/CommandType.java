@@ -5,7 +5,6 @@ import com.example.webbasestarttask.command.impl.user.*;
 import com.example.webbasestarttask.command.impl.user.ShowUserCommand;
 
 public enum CommandType {
-    ADD_USER(new AddUserCommand()),
     DELETE_USER(new DeleteUserCommand()),
     LOGIN(new LoginCommand()),
     LOGOUT(new LogoutCommand()),
