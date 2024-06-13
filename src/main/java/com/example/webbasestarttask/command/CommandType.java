@@ -1,14 +1,18 @@
 package com.example.webbasestarttask.command;
 
-import com.example.webbasestarttask.command.impl.AddUserCommand;
-import com.example.webbasestarttask.command.impl.DefaultCommand;
-import com.example.webbasestarttask.command.impl.LoginCommand;
-import com.example.webbasestarttask.command.impl.LogoutCommand;
+import com.example.webbasestarttask.command.impl.contact.CreateContactCommand;
+import com.example.webbasestarttask.command.impl.user.*;
+import com.example.webbasestarttask.command.impl.user.ShowUserCommand;
 
 public enum CommandType {
     ADD_USER(new AddUserCommand()),
+    DELETE_USER(new DeleteUserCommand()),
     LOGIN(new LoginCommand()),
     LOGOUT(new LogoutCommand()),
+    REGISTER(new RegisterCommand()),
+    UPDATE_USERNAME(new UpdateUsernameCommand()),
+    SHOW_USER(new ShowUserCommand()),
+    CREATE_CONTACT(new CreateContactCommand()),
     DEFAULT(new DefaultCommand());
     Command command;
     CommandType(Command command) {

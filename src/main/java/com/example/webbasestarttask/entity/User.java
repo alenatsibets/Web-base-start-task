@@ -3,65 +3,61 @@ package com.example.webbasestarttask.entity;
 import java.util.Objects;
 
 public class User extends AbstractEntity{
-    private String phoneNumber;
-    private String lastName;
+    private String userName;
+    private String email;
     private String password;
 
-    public User(String phoneNumber, String lastName, String password) {
-        this.phoneNumber = phoneNumber;
-        this.lastName = lastName;
+    public User(String userName, String email, String password) {
+        this.userName = userName;
+        this.email = email;
         this.password = password;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public User(int id, String userName, String email, String password) {
+        super.setId(id);
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public String getUserName() {
+        return userName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         User user = (User) o;
-
-        if (!Objects.equals(phoneNumber, user.phoneNumber)) return false;
-        if (!lastName.equals(user.lastName)) return false;
-        return password.equals(user.password);
+        return Objects.equals(userName, user.userName) && Objects.equals(email, user.email) && Objects.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        int result = phoneNumber != null ? phoneNumber.hashCode() : 0;
-        result = 31 * result + lastName.hashCode();
-        result = 31 * result + password.hashCode();
-        return result;
+        return Objects.hash(userName, email, password);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "phoneNumber='" + phoneNumber + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

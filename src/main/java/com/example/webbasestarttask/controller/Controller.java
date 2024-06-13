@@ -12,9 +12,9 @@ import jakarta.servlet.annotation.*;
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
 
-import static com.example.webbasestarttask.util.Constant.ERROR_505;
+import static com.example.webbasestarttask.util.PagePath.ERROR_500;
 
-@WebServlet(name = "helloServlet", urlPatterns = {"/controller", "*.do"})
+@WebServlet(name = "firstServlet", urlPatterns = {"/controller", "*.do"})
 public class Controller extends HttpServlet {
 //    static Logger logger = LogManager.getLogger();
 
@@ -35,7 +35,7 @@ public class Controller extends HttpServlet {
         } catch (CommandException e) {
             //response.sendError(500);
             request.setAttribute("error_msg", e.getCause());
-            request.getRequestDispatcher(ERROR_505).forward(request, response);
+            request.getRequestDispatcher(ERROR_500).forward(request, response);
         }
 
     }

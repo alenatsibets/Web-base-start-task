@@ -1,20 +1,20 @@
 package com.example.webbasestarttask.command;
 
 
-import static com.example.webbasestarttask.util.Constant.INDEX;
+import static com.example.webbasestarttask.util.PagePath.INDEX;
 
 public class Router {
     private String page = INDEX;
-    private Type type = Type.FORWARD;
-    enum Type{
+    private RouteType routeType = RouteType.FORWARD;
+    enum RouteType {
         FORWARD, REDIRECT;
     }
     public Router(String page) {
         this.page = page;
     }
-    public Router(String page, Type type) {
+    public Router(String page, RouteType routeType) {
         this.page = page;
-        this.type = type;
+        this.routeType = routeType;
     }
 
     public String getPage() {
@@ -26,6 +26,6 @@ public class Router {
     }
 
     public void setRedirect() {
-        this.type = Type.REDIRECT;
+        this.routeType = RouteType.REDIRECT;
     }
 }

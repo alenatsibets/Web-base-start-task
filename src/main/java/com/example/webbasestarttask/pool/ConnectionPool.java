@@ -2,7 +2,6 @@ package com.example.webbasestarttask.pool;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-//import org.jetbrains.annotations.NotNull;
 
 import java.sql.Connection;
 import java.sql.Driver;
@@ -15,8 +14,6 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
-import static com.example.webbasestarttask.util.Constant.CONNECTION_POOL_CAPACITY;
-import static com.example.webbasestarttask.util.Constant.POSTGRES_CONNECTION;
 
 public class ConnectionPool {
     private static ConnectionPool instance;
@@ -25,6 +22,8 @@ public class ConnectionPool {
     private static ReentrantLock lock = new ReentrantLock();
     private static AtomicBoolean create = new AtomicBoolean(false);
     static Logger logger = LogManager.getLogger();
+    private static final int CONNECTION_POOL_CAPACITY = 8;
+    private static final String POSTGRES_CONNECTION = "jdbc:postgresql://localhost:5434/Users";
 
     static {
         try {
@@ -86,7 +85,6 @@ public class ConnectionPool {
         }
     }
 
-    //deregisterDriver method
     public void destroyPool() {
         for (int i = 0; i < CONNECTION_POOL_CAPACITY; i++) {
             try {
@@ -108,12 +106,11 @@ public class ConnectionPool {
             }
         }
     }
-//    @NotNull
+
     private static Properties getProperties() {
         Properties prop = new Properties();
         prop.put("user", "postgres");
-        prop.put("password", "KsuGWl39dJJs9");
-
+        prop.put("password", "");
         prop.put("autoReconnect", "true");
         prop.put("characterEncoding", "UTF-8");
         prop.put("useUnicode", "true");
