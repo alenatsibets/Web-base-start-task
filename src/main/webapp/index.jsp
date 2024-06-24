@@ -4,6 +4,6 @@
     <title>Index</title>
 </head>
 <body>
-<jsp:forward page="./pages/login.jsp"/>
+<jsp:forward page="pages/login.jsp"/>
 </body>
 </html>

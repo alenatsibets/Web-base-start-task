@@ -18,7 +18,9 @@ public class ForwardFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         HttpSession session = httpServletRequest.getSession(false);
-        session.setAttribute("filter_attr", "DispatcherType.FORWARD");
+        if (session != null) {
+            session.setAttribute("filter_attr", "DispatcherType.FORWARD");
+        }
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

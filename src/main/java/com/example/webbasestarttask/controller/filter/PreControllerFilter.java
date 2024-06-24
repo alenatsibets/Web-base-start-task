@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+
 @WebFilter(filterName = "PreControllerFilter", urlPatterns = "/controller")
 public class PreControllerFilter implements Filter {
     static Logger logger = LogManager.getLogger();
@@ -21,7 +22,7 @@ public class PreControllerFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         HttpSession session = httpServletRequest.getSession(false);
-        logger.info("+++++++++> Session in PreControllerFilter: " + (session != null ? session.getId(): "sessionNotCreated"));
+        logger.info("+++++++++> Session in PreControllerFilter: " + (session != null ? session.getId() : "sessionNotCreated"));
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

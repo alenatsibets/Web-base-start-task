@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 @WebListener
 public class SessionCreateListenerImpl implements HttpSessionListener {
     static Logger logger = LogManager.getLogger();
+
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         HttpSessionListener.super.sessionCreated(se);

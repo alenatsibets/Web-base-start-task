@@ -1,6 +1,5 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page isErrorPage="true" contentType="text/html;charset=UTF-8" language="java" %>
-<fmt:setLocale value="be"/>
+<fmt:setLocale value="${sessionScope.locale}" />
 <fmt:setBundle basename="prop.page_content"/>
 <html>
 <head>
@@ -10,10 +9,14 @@
     <style><%@include file="../css/error.css"%></style>
 </head>
 <body>
+<jsp:include page="../header.jsp" />
 <div class="container">
     <h1><fmt:message key="error_404.name"/></h1>
     <p><fmt:message key="error_404.explanation"/></p>
-    <a href="index.jsp"><fmt:message key="error_404.exit"/></a>
+    <form action="controller">
+        <input type="hidden" name="command" value="view_menu">
+        <button type="submit" class="custom-button"><fmt:message key="error_404.exit"/></button>
+    </form>
 </div>
 </body>
 </html>

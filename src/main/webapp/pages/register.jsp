@@ -1,6 +1,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<fmt:setLocale value="be"/>
+<fmt:setLocale value="${sessionScope.locale}" />
 <fmt:setBundle basename="prop.page_content"/>
 <html>
 <head>
@@ -8,8 +8,10 @@
     <style><%@include file="css/register.css"%></style>
 </head>
 <body>
+<jsp:include page="header.jsp" />
 <h2><fmt:message key="register.header"/></h2>
-<form action="${pageContext.request.contextPath}/register" method="post">
+<form action="controller">
+    <input type="hidden" name="command" value="register"/>
     <div>
         <label for="username"><fmt:message key="register.label.username"/></label>
         <input type="text" id="username" name="username" required pattern="\w+" title="<fmt:message key="register.label.username.rule"/>">
@@ -19,13 +21,17 @@
         <input type="email" id="email" name="email" required>
     </div>
     <label for="password"><fmt:message key="register.label.password"/></label>
-    <input type="password" id="password" name="password" required pattern=".{8,}" title="<fmt:message key="register.label.password.rule"/>">
+    <input type="password" id="password" name="password" required pattern=".{8,}" title="<fmt:message key="password.rule"/>">
+    <span class="message">${signup_error}</span>
     <div>
         <input type="submit" value="<fmt:message key="register.submit"/>">
     </div>
 </form>
 <ul>
-    <li><a href="http://localhost:8080/Web_base_start_task_war_exploded/login"><fmt:message key="log_in"/></a></li>
+    <form action="controller">
+        <input type="hidden" name="command" value="view_login">
+        <button type="submit" class="custom-button"><fmt:message key="log_in"/></button>
+    </form>
 </ul>
 </body>
 </html>

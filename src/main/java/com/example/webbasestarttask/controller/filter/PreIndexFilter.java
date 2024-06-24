@@ -22,7 +22,7 @@ public class PreIndexFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         HttpSession session = httpServletRequest.getSession(false);
-        logger.info("---------> Session in PreIndexFilter: " + (session != null ? session.getId(): "sessionNotCreated"));
+        logger.info("---------> Session in PreIndexFilter: " + (session != null ? session.getId() : "sessionNotCreated"));
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

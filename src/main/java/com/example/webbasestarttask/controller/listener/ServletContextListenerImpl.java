@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 @WebListener
 public class ServletContextListenerImpl implements ServletContextListener {
     static Logger logger = LogManager.getLogger();
+
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ServletContextListener.super.contextInitialized(sce);
