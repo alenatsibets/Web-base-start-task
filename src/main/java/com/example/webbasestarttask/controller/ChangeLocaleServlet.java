@@ -10,7 +10,7 @@ import java.io.IOException;
 @WebServlet("/changeLocale")
 public class ChangeLocaleServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String language = request.getParameter("lang");
         if (language != null && !language.isEmpty()) {
             Locale locale = new Locale(language);
