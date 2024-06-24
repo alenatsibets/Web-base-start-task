@@ -14,7 +14,6 @@ import jakarta.servlet.http.HttpSession;
 import java.util.GregorianCalendar;
 
 import static com.example.webbasestarttask.util.constant.AttributeConstant.*;
-import static com.example.webbasestarttask.util.constant.PagePath.*;
 import static com.example.webbasestarttask.util.constant.ParamConstant.PARAM_EMAIL;
 import static com.example.webbasestarttask.util.constant.ParamConstant.PARAM_PASSWORD;
 
@@ -38,10 +37,10 @@ public class LoginCommand implements Command {
                 Cookie emailCookie = new Cookie(EMAIL, email);
                 emailCookie.setMaxAge(60 * 60 * 24 * 7);
                 response.addCookie(emailCookie);
-                page = USER_MENU;
+                page = "view_menu";
             } else {
                 request.setAttribute("login_msg", "incorrect login or pass");
-                page = INDEX;
+                page = "view_login";
             }
             session.setAttribute("current_page", page);
         } catch (ServiceException e) {
@@ -49,6 +48,6 @@ public class LoginCommand implements Command {
             throw new CommandException(e);
         }
 
-        return new Router(page);
+        return new Router(page, Router.RouteType.REDIRECT);
     }
 }

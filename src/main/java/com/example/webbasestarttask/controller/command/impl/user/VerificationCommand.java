@@ -13,8 +13,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import static com.example.webbasestarttask.util.constant.AttributeConstant.*;
-import static com.example.webbasestarttask.util.constant.PagePath.REGISTRATION_SUCCESSFUL;
-import static com.example.webbasestarttask.util.constant.PagePath.VERIFICATION_PAGE;
 
 public class VerificationCommand implements Command {
     @Override
@@ -33,11 +31,11 @@ public class VerificationCommand implements Command {
             } catch (ServiceException e) {
                 throw new CommandException(e);
             }
-            page = REGISTRATION_SUCCESSFUL;
+            page = "view_registration_result";
         } else {
             request.setAttribute("error", "invalid verification code");
-            page = VERIFICATION_PAGE;
+            page = "view_verification_page";
         }
-        return new Router(page);
+        return new Router(page, Router.RouteType.REDIRECT);
     }
 }

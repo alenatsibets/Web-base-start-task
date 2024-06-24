@@ -33,7 +33,7 @@ public class Controller extends HttpServlet {
             if (page.getRouteType() == Router.RouteType.FORWARD){
                 request.getRequestDispatcher(page.getPage()).forward(request, response);
             } else {
-                response.sendRedirect(request.getContextPath() + page.getPage());
+                response.sendRedirect(request.getContextPath() + "/controller?command=" + page.getPage());
             }
 
         } catch (CommandException e) {

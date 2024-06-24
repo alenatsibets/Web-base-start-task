@@ -34,6 +34,6 @@ public class RegisterCommand implements Command {
             logger.error(e);
             request.setAttribute(ERROR, e.getCause());
         }
-        return new Router(VERIFICATION_PAGE);
+        return new Router(VERIFICATION_PAGE, Router.RouteType.REDIRECT);
     }
 }

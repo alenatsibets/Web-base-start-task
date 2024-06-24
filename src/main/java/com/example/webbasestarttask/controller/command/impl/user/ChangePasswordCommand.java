@@ -12,7 +12,6 @@ import jakarta.servlet.http.HttpSession;
 
 import static com.example.webbasestarttask.util.constant.AttributeConstant.*;
 import static com.example.webbasestarttask.util.constant.ParamConstant.*;
-import static com.example.webbasestarttask.util.constant.PagePath.*;
 
 public class ChangePasswordCommand implements Command {
     @Override
@@ -26,9 +25,9 @@ public class ChangePasswordCommand implements Command {
             String username = (String) session.getAttribute(EMAIL);
             try {
                 if (userService.changePassword(oldPassword, newPassword, username)) {
-                    page = PASSWORD_CHANGE_SUCCESS;
+                    page = "view_change_password_success";
                 } else {
-                    page = CHANGE_PASSWORD;
+                    page = "view_change_password";
                     request.setAttribute("password_msg", "incorrect password");
                 }
                 session.setAttribute(CURRENT_PAGE, page);
@@ -36,6 +35,6 @@ public class ChangePasswordCommand implements Command {
                 throw new CommandException(e);
             }
         }
-        return new Router(page);
+        return new Router(page, Router.RouteType.REDIRECT);
     }
 }

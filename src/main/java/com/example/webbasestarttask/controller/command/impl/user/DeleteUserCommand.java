@@ -25,7 +25,7 @@ public class DeleteUserCommand implements Command {
         UserService userService = UserServiceImpl.getInstance();
         try {
             if (userService.deleteUser(userEmail)) {
-                return new Router(LOGIN);
+                return new Router("view_login", Router.RouteType.REDIRECT);
             } else {
                 logger.info("Delete failed");
             }
